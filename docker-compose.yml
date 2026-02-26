@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: dietdude_db
+    restart: always
+    environment:
+      - POSTGRES_DB=dietdude_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=yourpasswordhere
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5439:5432"
+
+  web:
+    build: .
+    container_name: dietdude_api
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=dietdude_db
+      - DB_USER=postgres
+      - DB_PASS=yourpasswordhere
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
