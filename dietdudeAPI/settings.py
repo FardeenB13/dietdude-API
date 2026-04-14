@@ -27,6 +27,12 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 # Allow localhost and the internal docker network
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
+# Session login + CSRF: trust the Vite dev server origin on POST (Origin header).
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -124,3 +130,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'core.User'

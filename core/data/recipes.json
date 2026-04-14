@@ -1,0 +1,366 @@
+[
+    {
+        "name": "Chicken and Rice",
+        "description": "Simple healthy meal",
+        "cooking_time": 30,
+        "servings": 2,
+        "instructions": "Cook chicken in a pan. Boil rice. Steam broccoli. Combine and serve.",
+        "ingredients": [
+            {
+                "name": "Chicken Breast",
+                "quantity": 1,
+                "unit": "lb"
+            },
+            {
+                "name": "Rice",
+                "quantity": 1,
+                "unit": "cup"
+            },
+            {
+                "name": "Broccoli",
+                "quantity": 2,
+                "unit": "cups"
+            }
+        ]
+    },
+    {
+        "name": "Spaghetti Marinara",
+        "description": "Classic pasta dish",
+        "cooking_time": 25,
+        "servings": 3,
+        "instructions": "Boil pasta. Heat marinara sauce. Mix and serve.",
+        "ingredients": [
+            {
+                "name": "Spaghetti",
+                "quantity": 1,
+                "unit": "box"
+            },
+            {
+                "name": "Marinara Sauce",
+                "quantity": 2,
+                "unit": "cups"
+            }
+        ]
+    },
+    {
+        "name": "Omelette",
+        "description": "Quick breakfast",
+        "cooking_time": 10,
+        "servings": 1,
+        "instructions": "Whisk eggs, cook in pan, add fillings, fold.",
+        "ingredients": [
+            {
+                "name": "Eggs",
+                "quantity": 3,
+                "unit": "units"
+            },
+            {
+                "name": "Milk",
+                "quantity": 0.25,
+                "unit": "cup"
+            },
+            {
+                "name": "Cheese",
+                "quantity": 0.5,
+                "unit": "cup"
+            }
+        ]
+    },
+    {
+        "name": "Grilled Cheese Sandwich",
+        "description": "Simple comfort food",
+        "cooking_time": 10,
+        "servings": 1,
+        "instructions": "Butter bread, add cheese, grill until golden.",
+        "ingredients": [
+            {
+                "name": "Bread",
+                "quantity": 2,
+                "unit": "slices"
+            },
+            {
+                "name": "Cheese",
+                "quantity": 2,
+                "unit": "slices"
+            },
+            {
+                "name": "Butter",
+                "quantity": 1,
+                "unit": "tbsp"
+            }
+        ]
+    },
+    {
+        "name": "Chicken Salad",
+        "description": "Light and fresh",
+        "cooking_time": 20,
+        "servings": 2,
+        "instructions": "Mix cooked chicken with lettuce and dressing.",
+        "ingredients": [
+            {
+                "name": "Chicken Breast",
+                "quantity": 1,
+                "unit": "lb"
+            },
+            {
+                "name": "Lettuce",
+                "quantity": 2,
+                "unit": "cups"
+            },
+            {
+                "name": "Salad Dressing",
+                "quantity": 0.5,
+                "unit": "cup"
+            }
+        ]
+    },
+    {
+        "name": "Lentil Soup",
+        "description": "Hearty vegetarian soup",
+        "cooking_time": 45,
+        "servings": 4,
+        "instructions": "Sauté onion and carrot. Add lentils, broth, and spices. Simmer until lentils are tender. Season and serve.",
+        "ingredients": [
+            {"name": "Red Lentils", "quantity": 1.5, "unit": "cups"},
+            {"name": "Vegetable Broth", "quantity": 6, "unit": "cups"},
+            {"name": "Onion", "quantity": 1, "unit": "medium"},
+            {"name": "Carrot", "quantity": 2, "unit": "units"},
+            {"name": "Olive Oil", "quantity": 2, "unit": "tbsp"}
+        ]
+    },
+    {
+        "name": "Black Bean Tacos",
+        "description": "Quick vegetarian tacos",
+        "cooking_time": 20,
+        "servings": 3,
+        "instructions": "Warm beans with cumin and garlic. Heat tortillas. Fill with beans, salsa, and toppings.",
+        "ingredients": [
+            {"name": "Black Beans", "quantity": 2, "unit": "cans"},
+            {"name": "Corn Tortillas", "quantity": 8, "unit": "units"},
+            {"name": "Salsa", "quantity": 1, "unit": "cup"},
+            {"name": "Lettuce", "quantity": 2, "unit": "cups"}
+        ]
+    },
+    {
+        "name": "Chickpea Curry",
+        "description": "Coconut curry with chickpeas",
+        "cooking_time": 35,
+        "servings": 4,
+        "instructions": "Sauté onion and spices. Add tomatoes, coconut milk, and chickpeas. Simmer 20 minutes. Serve with rice.",
+        "ingredients": [
+            {"name": "Chickpeas", "quantity": 2, "unit": "cans"},
+            {"name": "Coconut Milk", "quantity": 1, "unit": "can"},
+            {"name": "Diced Tomatoes", "quantity": 1, "unit": "can"},
+            {"name": "Rice", "quantity": 1.5, "unit": "cups"}
+        ]
+    },
+    {
+        "name": "Greek Salad",
+        "description": "Fresh Mediterranean salad",
+        "cooking_time": 15,
+        "servings": 2,
+        "instructions": "Chop vegetables. Combine with olives and feta. Dress with olive oil and lemon.",
+        "ingredients": [
+            {"name": "Cucumber", "quantity": 1, "unit": "large"},
+            {"name": "Tomato", "quantity": 2, "unit": "medium"},
+            {"name": "Feta Cheese", "quantity": 0.5, "unit": "cup"},
+            {"name": "Olives", "quantity": 0.25, "unit": "cup"},
+            {"name": "Olive Oil", "quantity": 3, "unit": "tbsp"}
+        ]
+    },
+    {
+        "name": "Beef Stir Fry",
+        "description": "Fast weeknight dinner",
+        "cooking_time": 25,
+        "servings": 3,
+        "instructions": "Slice beef thin. Stir-fry on high heat. Add vegetables and sauce. Serve over rice.",
+        "ingredients": [
+            {"name": "Beef Sirloin", "quantity": 1, "unit": "lb"},
+            {"name": "Bell Pepper", "quantity": 2, "unit": "units"},
+            {"name": "Broccoli", "quantity": 2, "unit": "cups"},
+            {"name": "Soy Sauce", "quantity": 3, "unit": "tbsp"},
+            {"name": "Rice", "quantity": 1.5, "unit": "cups"}
+        ]
+    },
+    {
+        "name": "Baked Salmon with Asparagus",
+        "description": "One-pan healthy dinner",
+        "cooking_time": 22,
+        "servings": 2,
+        "instructions": "Season salmon and asparagus. Bake at 400°F until fish flakes easily.",
+        "ingredients": [
+            {"name": "Salmon Fillet", "quantity": 1, "unit": "lb"},
+            {"name": "Asparagus", "quantity": 1, "unit": "bunch"},
+            {"name": "Lemon", "quantity": 1, "unit": "units"},
+            {"name": "Olive Oil", "quantity": 2, "unit": "tbsp"}
+        ]
+    },
+    {
+        "name": "Tofu Scramble",
+        "description": "Vegan breakfast",
+        "cooking_time": 15,
+        "servings": 2,
+        "instructions": "Crumble firm tofu. Cook with turmeric, nutritional yeast, and vegetables.",
+        "ingredients": [
+            {"name": "Firm Tofu", "quantity": 14, "unit": "oz"},
+            {"name": "Spinach", "quantity": 2, "unit": "cups"},
+            {"name": "Bell Pepper", "quantity": 0.5, "unit": "unit"},
+            {"name": "Olive Oil", "quantity": 1, "unit": "tbsp"}
+        ]
+    },
+    {
+        "name": "Vegetable Fried Rice",
+        "description": "Use leftover rice",
+        "cooking_time": 20,
+        "servings": 3,
+        "instructions": "Stir-fry vegetables. Add cold rice and soy sauce. Push aside, scramble egg, mix.",
+        "ingredients": [
+            {"name": "Cooked Rice", "quantity": 3, "unit": "cups"},
+            {"name": "Eggs", "quantity": 2, "unit": "units"},
+            {"name": "Frozen Peas", "quantity": 0.5, "unit": "cup"},
+            {"name": "Carrot", "quantity": 1, "unit": "unit"},
+            {"name": "Soy Sauce", "quantity": 2, "unit": "tbsp"}
+        ]
+    },
+    {
+        "name": "Turkey Zucchini Noodles",
+        "description": "Lower-carb pasta night",
+        "cooking_time": 25,
+        "servings": 2,
+        "instructions": "Brown ground turkey with garlic. Add marinara. Serve over spiralized zucchini.",
+        "ingredients": [
+            {"name": "Ground Turkey", "quantity": 1, "unit": "lb"},
+            {"name": "Marinara Sauce", "quantity": 2, "unit": "cups"},
+            {"name": "Zucchini", "quantity": 3, "unit": "medium"},
+            {"name": "Olive Oil", "quantity": 1, "unit": "tbsp"}
+        ]
+    },
+    {
+        "name": "Shakshuka",
+        "description": "Eggs poached in spiced tomato sauce",
+        "cooking_time": 30,
+        "servings": 2,
+        "instructions": "Simmer tomatoes with peppers and spices. Crack eggs into wells. Cover until set. Serve with bread.",
+        "ingredients": [
+            {"name": "Diced Tomatoes", "quantity": 1, "unit": "can"},
+            {"name": "Bell Pepper", "quantity": 1, "unit": "unit"},
+            {"name": "Eggs", "quantity": 4, "unit": "units"},
+            {"name": "Bread", "quantity": 4, "unit": "slices"}
+        ]
+    },
+    {
+        "name": "Miso Soup with Tofu",
+        "description": "Light Japanese soup",
+        "cooking_time": 15,
+        "servings": 2,
+        "instructions": "Heat dashi or broth. Whisk in miso off heat. Add tofu and green onion.",
+        "ingredients": [
+            {"name": "Miso Paste", "quantity": 2, "unit": "tbsp"},
+            {"name": "Firm Tofu", "quantity": 0.5, "unit": "block"},
+            {"name": "Green Onion", "quantity": 2, "unit": "stalks"},
+            {"name": "Vegetable Broth", "quantity": 4, "unit": "cups"}
+        ]
+    },
+    {
+        "name": "Overnight Oats",
+        "description": "No-cook breakfast",
+        "cooking_time": 5,
+        "servings": 1,
+        "instructions": "Mix oats, milk, and chia. Refrigerate overnight. Top with fruit before serving.",
+        "ingredients": [
+            {"name": "Rolled Oats", "quantity": 0.5, "unit": "cup"},
+            {"name": "Milk", "quantity": 0.5, "unit": "cup"},
+            {"name": "Banana", "quantity": 0.5, "unit": "unit"}
+        ]
+    },
+    {
+        "name": "Falafel Wraps",
+        "description": "Crispy chickpea patties in pita",
+        "cooking_time": 40,
+        "servings": 4,
+        "instructions": "Blend chickpeas with herbs and spices. Form balls and bake or fry. Stuff in pita with tahini and salad.",
+        "ingredients": [
+            {"name": "Chickpeas", "quantity": 2, "unit": "cans"},
+            {"name": "Pita Bread", "quantity": 4, "unit": "units"},
+            {"name": "Lettuce", "quantity": 2, "unit": "cups"},
+            {"name": "Cucumber", "quantity": 1, "unit": "medium"}
+        ]
+    },
+    {
+        "name": "Caprese Salad",
+        "description": "Tomato, mozzarella, basil",
+        "cooking_time": 10,
+        "servings": 2,
+        "instructions": "Layer tomato and mozzarella. Drizzle olive oil and balsamic. Top with basil.",
+        "ingredients": [
+            {"name": "Tomato", "quantity": 2, "unit": "large"},
+            {"name": "Mozzarella", "quantity": 8, "unit": "oz"},
+            {"name": "Olive Oil", "quantity": 2, "unit": "tbsp"},
+            {"name": "Basil", "quantity": 0.25, "unit": "cup"}
+        ]
+    },
+    {
+        "name": "Pasta Primavera",
+        "description": "Spring vegetables and pasta",
+        "cooking_time": 30,
+        "servings": 4,
+        "instructions": "Boil pasta. Sauté seasonal vegetables. Toss with pasta, parmesan, and pasta water.",
+        "ingredients": [
+            {"name": "Penne Pasta", "quantity": 1, "unit": "lb"},
+            {"name": "Zucchini", "quantity": 2, "unit": "medium"},
+            {"name": "Cherry Tomatoes", "quantity": 1, "unit": "cup"},
+            {"name": "Cheese", "quantity": 0.5, "unit": "cup"}
+        ]
+    },
+    {
+        "name": "Thai Chicken Lettuce Wraps",
+        "description": "Lettuce cups with seasoned chicken",
+        "cooking_time": 25,
+        "servings": 3,
+        "instructions": "Cook minced chicken with ginger, garlic, and soy. Spoon into lettuce leaves with herbs.",
+        "ingredients": [
+            {"name": "Chicken Breast", "quantity": 1, "unit": "lb"},
+            {"name": "Lettuce", "quantity": 1, "unit": "head"},
+            {"name": "Soy Sauce", "quantity": 2, "unit": "tbsp"},
+            {"name": "Carrot", "quantity": 1, "unit": "unit"}
+        ]
+    },
+    {
+        "name": "Quinoa Buddha Bowl",
+        "description": "Grain bowl with roasted veg",
+        "cooking_time": 35,
+        "servings": 2,
+        "instructions": "Cook quinoa. Roast sweet potato and broccoli. Assemble bowl with dressing.",
+        "ingredients": [
+            {"name": "Quinoa", "quantity": 1, "unit": "cup"},
+            {"name": "Sweet Potato", "quantity": 2, "unit": "medium"},
+            {"name": "Broccoli", "quantity": 1, "unit": "cup"},
+            {"name": "Olive Oil", "quantity": 2, "unit": "tbsp"}
+        ]
+    },
+    {
+        "name": "Bean and Rice Burrito Bowl",
+        "description": "Chipotle-style bowl",
+        "cooking_time": 30,
+        "servings": 3,
+        "instructions": "Season beans and rice. Layer with corn, salsa, and optional cheese.",
+        "ingredients": [
+            {"name": "Black Beans", "quantity": 1, "unit": "can"},
+            {"name": "Rice", "quantity": 1.5, "unit": "cups"},
+            {"name": "Corn", "quantity": 1, "unit": "cup"},
+            {"name": "Salsa", "quantity": 0.5, "unit": "cup"}
+        ]
+    },
+    {
+        "name": "Garlic Butter Shrimp",
+        "description": "Fast protein main",
+        "cooking_time": 15,
+        "servings": 2,
+        "instructions": "Sauté shrimp with garlic and butter until pink. Finish with lemon.",
+        "ingredients": [
+            {"name": "Shrimp", "quantity": 1, "unit": "lb"},
+            {"name": "Butter", "quantity": 3, "unit": "tbsp"},
+            {"name": "Lemon", "quantity": 0.5, "unit": "unit"}
+        ]
+    }
+]
