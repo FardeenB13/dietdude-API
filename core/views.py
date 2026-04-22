@@ -2,13 +2,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.db.models import Count, F, Q
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import GroceryList, Recipe
 from .serializers import (
     LoginSerializer,
+    PreferencesSerializer, 
     RecipeDetailSerializer,
     RecipeListSerializer,
     RecipeMatchSerializer,
@@ -109,3 +110,31 @@ class LogoutAPIView(APIView):
     def post(self, request):
         logout(request)
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class UpdatePreferencesAPIView(APIView):
+    """
+    PATCH /api/user/preferences/
+ 
+    Saves diet, budget, and shopping frequency for the logged-in user.
+    Returns the full updated UserSerializer payload so the frontend can
+    keep its local state in sync.
+ 
+    Example request body:
+    {
+        "diet": "vegetarian",
+        "budget": "120.00",
+        "shopping_frequency_value": 1,
+        "shopping_frequency_unit": "weeks"
+    }
+    """
+    permission_classes = [IsAuthenticated]
+ 
+    def patch(self, request):
+        serializer = PreferencesSerializer(
+            request.user,
+            data=request.data,
+            partial=True,
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(UserSerializer(request.user).data, status=status.HTTP_200_OK)

@@ -35,7 +35,6 @@ class RecipeDetailSerializer(serializers.ModelSerializer):
             "ingredients",
         ]
 
-
 class RecipeMatchSerializer(serializers.ModelSerializer):
     matched_ingredients = serializers.IntegerField(read_only=True)
     total_ingredients = serializers.IntegerField(read_only=True)
@@ -52,7 +51,6 @@ class RecipeMatchSerializer(serializers.ModelSerializer):
             "total_ingredients",
         ]
 
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -66,8 +64,36 @@ class UserSerializer(serializers.ModelSerializer):
             "shopping_frequency_value",
             "shopping_frequency_unit",
         ]
-
-
+class PreferencesSerializer(serializers.ModelSerializer):
+    """
+    PATCH /api/user/preferences/
+    Accepts the three preference fields and partially updates the User.
+    All fields are optional so the frontend can send only what changed.
+    """
+    class Meta:
+        model = User
+        fields = [
+            "diet",
+            "budget",
+            "shopping_frequency_value",
+            "shopping_frequency_unit",
+        ]
+        extra_kwargs = {
+            "diet": {"required": False},
+            "budget": {"required": False},
+            "shopping_frequency_value": {"required": False},
+            "shopping_frequency_unit": {"required": False},
+        }
+    def validate_budget(self, value):
+        if value < 0:
+            raise serializers.ValidationError("Budget must be a positive number.")
+        return value
+ 
+    def validate_shopping_frequency_value(self, value):
+        if value < 1:
+            raise serializers.ValidationError("Shopping frequency must be at least 1.")
+        return value
+    
 class SignUpSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=8)
     confirm_password = serializers.CharField(write_only=True, min_length=8, required=False)
