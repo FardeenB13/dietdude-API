@@ -112,23 +112,8 @@ class LogoutAPIView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class UpdatePreferencesAPIView(APIView):
-    """
-    PATCH /api/user/preferences/
- 
-    Saves diet, budget, and shopping frequency for the logged-in user.
-    Returns the full updated UserSerializer payload so the frontend can
-    keep its local state in sync.
- 
-    Example request body:
-    {
-        "diet": "vegetarian",
-        "budget": "120.00",
-        "shopping_frequency_value": 1,
-        "shopping_frequency_unit": "weeks"
-    }
-    """
     permission_classes = [IsAuthenticated]
- 
+
     def patch(self, request):
         serializer = PreferencesSerializer(
             request.user,
