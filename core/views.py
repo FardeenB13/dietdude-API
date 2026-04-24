@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.db.models import Count, F, Q
 from django.shortcuts import get_object_or_404
@@ -5,11 +6,13 @@ from rest_framework import generics, status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from google import genai
 
 from .models import GroceryList, Recipe
 from .serializers import (
     LoginSerializer,
     PreferencesSerializer, 
+    GroceryListSerializer,
     RecipeDetailSerializer,
     RecipeListSerializer,
     RecipeMatchSerializer,
@@ -123,3 +126,88 @@ class UpdatePreferencesAPIView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(UserSerializer(request.user).data, status=status.HTTP_200_OK)
+
+class GenerateGroceryListAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        api_key = settings.GEMINI_API_KEY
+        if not api_key:
+            return Response(
+                {"detail": "GEMINI_API_KEY is not configured."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+
+        user = request.user
+
+        prompt = f"""
+Create a grocery list for ONE shopping trip using these saved user preferences.
+
+Diet: {user.diet}
+Budget per trip: ${user.budget}
+Shopping frequency: every {user.shopping_frequency_value} {user.shopping_frequency_unit}
+
+Requirements:
+- Make the grocery list suitable for the selected diet.
+- Keep the list realistic for the budget.
+- Group items into:
+  1. Produce
+  2. Protein
+  3. Dairy / Alternatives
+  4. Grains / Pantry
+  5. Snacks
+  6. Miscellaneous
+- Include rough quantities.
+- Keep it clean and easy to read.
+- End with: Estimated total: $X-$Y
+- Do not include extra explanation.
+"""
+
+        try:
+            client = genai.Client(api_key=api_key)
+            response = client.models.generate_content(
+                model="gemini-3-flash-preview",
+                contents=prompt,
+            )
+
+            grocery_text = response.text if getattr(response, "text", None) else "Unable to generate grocery list."
+
+            grocery_list = GroceryList.objects.create(
+                user=user,
+                raw_text=grocery_text,
+            )
+
+            return Response(
+                {
+                    "grocery_list": grocery_text,
+                    "grocery_list_id": grocery_list.id,
+                    "created_at": grocery_list.created_at,
+                },
+                status=status.HTTP_200_OK,
+            )
+        except Exception as exc:
+            return Response(
+                {"detail": f"Failed to generate grocery list: {str(exc)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+
+
+class LatestGroceryListAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        grocery_list = (
+            GroceryList.objects
+            .filter(user=request.user)
+            .order_by("-created_at")
+            .first()
+        )
+
+        if not grocery_list:
+            return Response(
+                {"detail": "No grocery list found yet."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        serializer = GroceryListSerializer(grocery_list)
+        return Response(serializer.data, status=status.HTTP_200_OK)

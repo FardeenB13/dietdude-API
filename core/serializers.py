@@ -1,7 +1,7 @@
 from django.http import QueryDict
 from rest_framework import serializers
 
-from .models import Recipe, RecipeIngredient, User
+from .models import GroceryList, Recipe, RecipeIngredient, User
 
 
 class RecipeIngredientSerializer(serializers.ModelSerializer):
@@ -65,11 +65,6 @@ class UserSerializer(serializers.ModelSerializer):
             "shopping_frequency_unit",
         ]
 class PreferencesSerializer(serializers.ModelSerializer):
-    """
-    PATCH /api/user/preferences/
-    Accepts the three preference fields and partially updates the User.
-    All fields are optional so the frontend can send only what changed.
-    """
     class Meta:
         model = User
         fields = [
@@ -93,7 +88,11 @@ class PreferencesSerializer(serializers.ModelSerializer):
         if value < 1:
             raise serializers.ValidationError("Shopping frequency must be at least 1.")
         return value
-    
+
+class GroceryListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GroceryList
+        fields = ["id", "created_at", "raw_text"]    
 class SignUpSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=8)
     confirm_password = serializers.CharField(write_only=True, min_length=8, required=False)

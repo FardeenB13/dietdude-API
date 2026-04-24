@@ -21,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-key-for-dev')
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 # Ensure DEBUG is True for development
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
