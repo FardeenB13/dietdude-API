@@ -60,6 +60,7 @@ class UserSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "diet",
+            "dietary_restrictions",
             "budget",
             "shopping_frequency_value",
             "shopping_frequency_unit",
@@ -69,6 +70,7 @@ class PreferencesSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             "diet",
+            "dietary_restrictions",
             "budget",
             "shopping_frequency_value",
             "shopping_frequency_unit",
@@ -87,6 +89,18 @@ class PreferencesSerializer(serializers.ModelSerializer):
     def validate_shopping_frequency_value(self, value):
         if value < 1:
             raise serializers.ValidationError("Shopping frequency must be at least 1.")
+        return value
+    
+    VALID_DIETS = {"none", "vegetarian", "vegan", "halal", "keto"}
+
+    def validate_dietary_restrictions(self, value):
+        if not isinstance(value, list):
+            raise serializers.ValidationError("Must be a list.")
+
+        for v in value:
+            if v not in self.VALID_DIETS:
+                raise serializers.ValidationError(f"Invalid diet: {v}")
+
         return value
 
 class GroceryListSerializer(serializers.ModelSerializer):
