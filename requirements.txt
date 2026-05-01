@@ -5,3 +5,4 @@ djangorestframework==3.16.1
 sqlparse==0.5.5
 psycopg2-binary==2.9.9
 google-genai
+google-generativeai
