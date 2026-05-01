@@ -1,7 +1,7 @@
 from django.http import QueryDict
 from rest_framework import serializers
 
-from .models import GroceryList, Recipe, RecipeIngredient, User
+from .models import GroceryItem, GroceryList, Recipe, RecipeIngredient, User
 
 
 class RecipeIngredientSerializer(serializers.ModelSerializer):
@@ -51,6 +51,30 @@ class RecipeMatchSerializer(serializers.ModelSerializer):
             "total_ingredients",
         ]
 
+
+class RecipeMatchedDetailSerializer(serializers.ModelSerializer):
+    """Full recipe for UI cards: instructions, ingredients, plus match counts."""
+
+    ingredients = RecipeIngredientSerializer(
+        source="recipeingredient_set", many=True, read_only=True
+    )
+    matched_ingredients = serializers.IntegerField(read_only=True)
+    total_ingredients = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = Recipe
+        fields = [
+            "id",
+            "name",
+            "description",
+            "instructions",
+            "cooking_time",
+            "servings",
+            "ingredients",
+            "matched_ingredients",
+            "total_ingredients",
+        ]
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -89,10 +113,20 @@ class PreferencesSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Shopping frequency must be at least 1.")
         return value
 
+class GroceryItemSerializer(serializers.ModelSerializer):
+    ingredient_name = serializers.CharField(source="ingredient.name", read_only=True)
+
+    class Meta:
+        model = GroceryItem
+        fields = ["id", "ingredient_name", "quantity", "unit"]
+
+
 class GroceryListSerializer(serializers.ModelSerializer):
+    items = GroceryItemSerializer(many=True, read_only=True)
+
     class Meta:
         model = GroceryList
-        fields = ["id", "created_at", "raw_text"]    
+        fields = ["id", "created_at", "raw_text", "items"]    
 class SignUpSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=8)
     confirm_password = serializers.CharField(write_only=True, min_length=8, required=False)
@@ -158,3 +192,12 @@ class SignUpSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
+
+
+class AskGeminiSerializer(serializers.Serializer):
+    question = serializers.CharField(
+        required=True,
+        max_length=8000,
+        trim_whitespace=True,
+        allow_blank=False,
+    )
