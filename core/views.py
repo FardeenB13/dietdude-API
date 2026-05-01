@@ -236,7 +236,7 @@ class GenerateGroceryListAPIView(APIView):
         prompt = f"""
 Create a grocery list for ONE shopping trip using these saved user preferences.
 
-Diet: {user.diet}
+Dietary restrictions: {", ".join(user.dietary_restrictions) if user.dietary_restrictions else "none"}
 Budget per trip: ${user.budget}
 Shopping frequency: every {user.shopping_frequency_value} {user.shopping_frequency_unit}
 
